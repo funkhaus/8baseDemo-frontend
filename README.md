@@ -2,7 +2,9 @@
 
 This is a basic demo of how to build a basic 8Base powered application using Nuxt as a frontend.
 
-To many demo app's skip over the REAL things you will need to do. THis demo does the following:
+Too many demo app's skip over the REAL things you will need to do. This demo hopefully is a complete example of a basic working app.
+
+It does the following:
 
 1.  Setup 8Base backend
 1.  Code for sign up, sign in and logout
@@ -10,6 +12,8 @@ To many demo app's skip over the REAL things you will need to do. THis demo does
 1.  Upload an image
 1.  Persist store data between reloads
 1.  Write custom functions on the backend server
+
+Please see the corresponding [backend codebase here](https://github.com/funkhaus/8baseDemo-backend).
 
 ## Requirements
 
