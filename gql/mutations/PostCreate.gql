@@ -1,0 +1,16 @@
+mutation PostCreate($caption: String, $fileId: String, $filename: String) {
+  __typename
+  postCreate(
+    data: {
+      caption: $caption
+      image: { create: { fileId: $fileId, filename: $filename } }
+    }
+  ) {
+    id
+    caption
+    image {
+      id
+      downloadUrl
+    }
+  }
+}

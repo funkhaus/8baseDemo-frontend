@@ -4,7 +4,16 @@ export default {
     ...process.env
   },
 
-  modules: ["@nuxtjs/apollo"],
+  modules: [
+    "@nuxtjs/apollo",
+    [
+      "nuxt-vuex-localstorage",
+      {
+        localStorage: ["user", "token"],
+        mode: process.env.NODE_ENV === "development" ? "debug" : null
+      }
+    ]
+  ],
   buildModules: ["@nuxtjs/dotenv"],
 
   apollo: {

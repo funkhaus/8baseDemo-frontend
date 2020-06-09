@@ -1,0 +1,16 @@
+query UserPosts($email: String!) {
+  __typename
+  postsList(
+    filter: { createdBy: { email: { equals: $email } } }
+    orderBy: createdAt_DESC
+  ) {
+    items {
+      caption
+      id
+      image {
+        downloadUrl
+        id
+      }
+    }
+  }
+}

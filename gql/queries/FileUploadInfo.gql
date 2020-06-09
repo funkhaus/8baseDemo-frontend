@@ -1,0 +1,8 @@
+query fileUploadInfo {
+  fileUploadInfo {
+    signature
+    apiKey
+    policy
+    path
+  }
+}

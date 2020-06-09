@@ -1,5 +1,5 @@
 <template lang="html">
-  <main class="signup">
+  <main>
     <h2>User Signup</h2>
 
     <form @submit.prevent="onSubmit">

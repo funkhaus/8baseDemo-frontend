@@ -1,5 +1,5 @@
 <template lang="html">
-  <main class="login">
+  <main>
     <h2>User Login</h2>
 
     <form @submit.prevent="onSubmit">
@@ -17,14 +17,14 @@
         :required="true"
       />
 
+      <button type="submit" :disabled="this.loading">
+        Login
+      </button>
+
       <p v-if="error">
         {{ error }}
         Incorrect email or password.
       </p>
-
-      <button type="submit" :disabled="this.loading">
-        Login
-      </button>
     </form>
 
     <p>

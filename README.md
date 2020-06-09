@@ -8,6 +8,7 @@ To many demo app's skip over the REAL things you will need to do. THis demo does
 1.  Code for sign up, sign in and logout
 1.  Create data on the backend
 1.  Upload an image
+1.  Persist store data between reloads
 1.  Write custom functions on the backend server
 
 ## Requirements
@@ -90,6 +91,7 @@ Then:
 ### 4. Install filestack SDK
 
 SEE https://www.npmjs.com/package/filestack-js
+SEE https://filestack.github.io/filestack-js/
 
 ```
 npm install --save filestack-js
@@ -111,7 +113,7 @@ npm install --save filestack-js
 
 1. Create a `USER_LOGIN`
 1. Create `gql/mutations/UserLogin.gql`. Use the `userLogin` mutation.
-1. Set `this.$apolloHelpers.onLogin(token)`
+1. Set `this.$apolloHelpers.onLogin(token)`.
 1. Save token to store, helps for the refresh token later.
 1. Get user and save to store, see next step.
 1. Redirect to protected route?
@@ -124,15 +126,35 @@ npm install --save filestack-js
 ## 6. Protected Auth Middleware
 
 1. Create a `middleware/authenticated.js` file
-1. Add `middleware: ["authenticated"]` to each page route.
+1. Add `middleware: ["authenticated"]` to each page route you want to be protected.
+
+TIP Now would be a good time to persist your user data.
+SEE https://www.npmjs.com/package/nuxt-vuex-localstorage
+
+NOTE If you use `nuxt-vuex-localstorage` keep in mind that the server will not have access to your browsers local storage, so be on the look out for node mismatch SSR errors.
 
 ## 7. Create a Post
 
-1. Use `postCreate` GQL mutation, with Filestack ID from `<upload-file>` button.
+1. Create a form on `/pages/home.vue`
+1. Add `<button-upload>` component, capture `uploadedAll` event.
+1. Use `postCreate` GQL mutation on form submit. Use emitted Filestack `fileId` from `<button-upload>` component.
+   1. Note the `create` relationship syntax in GQL. There is also `connect` and `reconnect`.
+      1. `create` creates the image while also creating the post.
+      1. `connect` would connect to an image that already existed in 8Base somewhere.
+      1. `reconnect` would be used if you could connect multiple images to a post, and you wanted to RESET all connections.
+1. The `refecthQueries` feature is useful for a basic alternative to a websocket subscription.
 
-## 8. Logout
+## 8. List user's posts
 
-1.  Use `this.$apolloHelpers.onLogout()` in a async method, then redirect.
+1.  Make a smart query, using the `postsList` GQL query.
+    1. Note the `orderBy` parameter in the query.
+1.  Be sure to use the `update()` function to return what you need.
+1.  Note the use of `$apollo.loading` in your templates.
+
+## 9. Logout
+
+1.  Use `this.$apolloHelpers.onLogout()` in a async store action, useful to clear store too.
+1.  Then redirect to login page.
 
 ## 8Base Roles
 
@@ -152,7 +174,7 @@ prettier-eslint
 sass-loader
 ```
 
-Use this to store your Vuex data (like your auth token). Works between reloads!
+Use this to make your Vuex data work between reloads!
 SEE https://www.npmjs.com/package/nuxt-vuex-localstorage
 
 Use lodash `_get()` a lot!
