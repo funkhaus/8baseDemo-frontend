@@ -131,7 +131,7 @@ npm install --save filestack-js
 TIP Now would be a good time to persist your user data.
 SEE https://www.npmjs.com/package/nuxt-vuex-localstorage
 
-NOTE If you use `nuxt-vuex-localstorage` keep in mind that the server will not have access to your browsers local storage, so be on the look out for node mismatch SSR errors. Best to avoid this using `nuxtServerInit` hook for required data and use of `<client-only>`.
+NOTE If you use `nuxt-vuex-localstorage` keep in mind that the server will not have access to your browsers local storage, so be on the look out for node mismatch SSR errors. Best to avoid this using `nuxtServerInit` hook for required data and use of `<client-only>`. Another good idea is to use route params for data required to make SSR requests.
 
 ## 7. Create a Post
 

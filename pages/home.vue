@@ -29,6 +29,7 @@
 
     <!-- This should be made into another component -->
     <section v-if="!$apollo.loading && posts.length" class="section-posts">
+      <h3>Your posts</h3>
       <div v-for="post in posts">
         <img :src="post.image.downloadUrl" />
         <p v-text="post.caption" />
