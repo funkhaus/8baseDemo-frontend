@@ -1,0 +1,11 @@
+{
+  "name": "8baseDemo",
+  "scripts": {
+    "dev": "nuxt"
+  },
+  "dependencies": {
+    "@nuxtjs/apollo": "^4.0.1-rc.1",
+    "filestack-js": "^3.15.0",
+    "nuxt": "^2.12.2"
+  }
+}
