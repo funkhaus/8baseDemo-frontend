@@ -32,6 +32,8 @@ Go to: https://app.8base.com/data
 
 ## 2. Add mock data
 
+Go to: https://app.8base.com/data, use the "Data" tab to manually make some Posts and Likes.
+
 1.  Add a Post using 8Base dashboard
 2.  Add a Like using 8Base dashboard, connect to Post
 
