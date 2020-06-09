@@ -1,6 +1,6 @@
 <template lang="html">
-  <main class="signup">
-    <h2>User Signup</h2>
+  <main class="login">
+    <h2>User Login</h2>
 
     <form @submit.prevent="onSubmit">
       <input
@@ -19,17 +19,17 @@
 
       <p v-if="error">
         {{ error }}
-        Your password isn't storng enough.
+        Incorrect email or password.
       </p>
 
       <button type="submit" :disabled="this.loading">
-        Signup
+        Login
       </button>
-
-      <p>
-        Already have an account? <nuxt-link to="/login">Login here</nuxt-link>
-      </p>
     </form>
+
+    <p>
+      Don't have an account? <nuxt-link to="/signup">Signup here</nuxt-link>
+    </p>
   </main>
 </template>
 
@@ -55,17 +55,7 @@ export default {
         password: this.password
       };
 
-      // Signup a user
-      try {
-        await this.$store.dispatch("USER_SIGNUP", credentials);
-      } catch (e) {
-        // Set error object
-        this.error = e;
-        this.loading = false;
-        return;
-      }
-
-      // Now try to login the user
+      // Now try to login the user.
       try {
         await this.$store.dispatch("USER_LOGIN", credentials);
       } catch (e) {

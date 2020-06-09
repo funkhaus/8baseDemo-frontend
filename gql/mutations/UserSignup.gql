@@ -1,0 +1,11 @@
+mutation UserSignup($password: String!, $email: String!, $authProfileId: ID!) {
+  __typename
+  userSignUpWithPassword(
+    password: $password
+    user: { email: $email }
+    authProfileId: $authProfileId
+  ) {
+    id
+    email
+  }
+}

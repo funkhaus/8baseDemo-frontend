@@ -1,0 +1,9 @@
+query User {
+  __typename
+  user(email: "drewrb@gmail.com") {
+    id
+    email
+    firstName
+    lastName
+  }
+}

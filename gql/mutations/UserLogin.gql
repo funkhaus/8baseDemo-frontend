@@ -1,0 +1,12 @@
+mutation UserLogin($email: String!, $password: String!, $authProfileId: ID!) {
+  __typename
+  userLogin(
+    data: { email: $email, password: $password, authProfileId: $authProfileId }
+  ) {
+    auth {
+      idToken
+      refreshToken
+    }
+    success
+  }
+}

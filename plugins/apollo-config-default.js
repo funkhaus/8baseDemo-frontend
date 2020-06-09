@@ -1,6 +1,5 @@
 export default function() {
   return {
-    //httpEndpoint: process.env.BASE_ENDPOINT
-    httpEndpoint: ""
+    httpEndpoint: process.env.BASE_ENDPOINT
   };
 }
