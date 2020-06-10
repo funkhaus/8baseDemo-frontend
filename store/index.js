@@ -79,8 +79,8 @@ export const actions = {
     const apollo = this.app.apolloProvider.defaultClient;
 
     try {
-      var res = await apollo.mutate({
-        mutation: USER_GET,
+      var res = await apollo.query({
+        query: USER_GET,
         variables: {
           email: email
         }
